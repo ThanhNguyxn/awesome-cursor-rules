@@ -37,7 +37,7 @@ This rule configures Cursor AI to act as an expert in building type-safe databas
 
 ## Example Project Structure
 
-```
+```text
 my-drizzle-app/
 ├── src/
 │   ├── db/

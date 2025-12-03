@@ -36,7 +36,7 @@ This rule configures Cursor AI to act as an expert in building full-stack web ap
 
 ## Example Project Structure
 
-```
+```text
 my-remix-app/
 ├── app/
 │   ├── routes/

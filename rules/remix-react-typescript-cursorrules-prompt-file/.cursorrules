@@ -60,7 +60,14 @@ app/
 ```typescript
 import type { LoaderFunctionArgs, ActionFunctionArgs, MetaFunction } from '@remix-run/node'
 import { json, redirect } from '@remix-run/node'
-import { useLoaderData, useActionData, Form, useNavigation } from '@remix-run/react'
+import {
+  useLoaderData,
+  useActionData,
+  Form,
+  useNavigation,
+  useRouteError,
+  isRouteErrorResponse,
+} from '@remix-run/react'
 import { z } from 'zod'
 
 // Meta export for SEO
@@ -231,13 +238,18 @@ export default function RegisterPage() {
 // app/lib/auth.server.ts
 import { createCookieSessionStorage, redirect } from '@remix-run/node'
 
+const SESSION_SECRET = process.env.SESSION_SECRET
+if (!SESSION_SECRET) {
+  throw new Error('SESSION_SECRET environment variable is required')
+}
+
 const sessionStorage = createCookieSessionStorage({
   cookie: {
     name: '__session',
     httpOnly: true,
     path: '/',
     sameSite: 'lax',
-    secrets: [process.env.SESSION_SECRET!],
+    secrets: [SESSION_SECRET],
     secure: process.env.NODE_ENV === 'production',
   },
 })

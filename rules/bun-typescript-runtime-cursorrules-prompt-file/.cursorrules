@@ -100,9 +100,9 @@ const file = Bun.file('large-file.txt')
 const stream = file.stream()
 
 // File metadata
-const file = Bun.file('data.txt')
-console.log(file.size)  // Size in bytes
-console.log(file.type)  // MIME type
+const metaFile = Bun.file('data.txt')
+console.log(metaFile.size)  // Size in bytes
+console.log(metaFile.type)  // MIME type
 ```
 
 ### SQLite Database
@@ -246,10 +246,10 @@ describe('User Service', () => {
     expect(user.email).toBe('test@example.com')
   })
   
-  test('should throw on duplicate email', () => {
-    expect(async () => {
+  test('should throw on duplicate email', async () => {
+    await expect(async () => {
       await createUser({ email: 'test@example.com', name: 'Another' })
-    }).toThrow()
+    }).rejects.toThrow()
   })
 })
 

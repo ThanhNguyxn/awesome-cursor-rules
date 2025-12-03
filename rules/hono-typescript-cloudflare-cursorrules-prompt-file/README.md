@@ -35,7 +35,7 @@ This rule configures Cursor AI to act as an expert in building edge-first APIs a
 
 ## Example Project Structure
 
-```
+```text
 my-hono-app/
 ├── src/
 │   ├── index.ts

@@ -36,7 +36,7 @@ This rule configures Cursor AI to act as an expert in building modern applicatio
 
 ## Example Project Structure
 
-```
+```text
 my-bun-app/
 ├── src/
 │   ├── index.ts
